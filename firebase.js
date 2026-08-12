@@ -1,10 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyCUQcaDwTMzKPlxK5WCIXwuamVIuHNmna4",
-  authDomain: "mochaandmiso.firebaseapp.com",
-  projectId: "mochaandmiso",
-  storageBucket: "mochaandmiso.firebasestorage.app",
-  messagingSenderId: "683827731019",
-  appId: "1:683827731019:web:eec921049f6fe4aa160bce"
+  apiKey: "AIzaSyBXMVdEm_W6HAmDtydXJTI8xJyhNNGtcHI",
+  authDomain: "bean-and-bloom-cafe-936ed.firebaseapp.com",
+  projectId: "bean-and-bloom-cafe-936ed",
+  storageBucket: "bean-and-bloom-cafe-936ed.firebasestorage.app",
+  messagingSenderId: "273869683823",
+  appId: "1:273869683823:web:e021576ef64796b864a19a",
+  measurementId: "G-VTDEVVM8V2"
 };
 
 firebase.initializeApp(firebaseConfig);

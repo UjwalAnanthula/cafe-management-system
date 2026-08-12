@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Portal — Mocha & Miso Craft Café</title>
+  <title>Admin Portal — Bean & Bloom Café</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/jpeg" href="asstes/logo_icon.jpg" />
+  <link rel="icon" type="image/jpeg" href="assets/logo_icon.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,9 +34,9 @@
   <section class="admin-login-screen" id="admin-login-section">
     <div class="admin-login-card">
       <div class="admin-brand-header">
-        <img src="asstes/logo_icon.jpg" alt="Mocha & Miso" class="admin-brand-logo" />
+        <img src="assets/logo_icon.jpg" alt="Bean & Bloom" class="admin-brand-logo" />
         <h1 class="admin-brand-title">Admin Portal</h1>
-        <p class="admin-brand-sub">Mocha &amp; Miso Craft Café</p>
+        <p class="admin-brand-sub">Bean & Bloom Café</p>
       </div>
 
       <form class="reservation-form" id="admin-login-form" novalidate>
@@ -69,7 +69,7 @@
     <header class="admin-header">
       <div class="container admin-header-inner">
         <div class="admin-logo-group">
-          <h2 class="admin-header-title">Mocha &amp; Miso</h2>
+          <h2 class="admin-header-title">Bean &amp; Bloom</h2>
           <span class="admin-badge">Admin Dashboard</span>
         </div>
         <div class="admin-user-info">
@@ -185,7 +185,7 @@
       </div>
 
       <div class="form-group" style="margin-bottom: 20px;">
-        <input type="text" id="modal-subject" class="form-input" value="Your Reservation at Mocha & Miso Café" />
+        <input type="text" id="modal-subject" class="form-input" value="Your Reservation at Bean & Bloom Café" />
         <label for="modal-subject" class="form-label form-label--up">Subject</label>
       </div>
 
@@ -207,23 +207,18 @@
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
-  <!-- EmailJS SDK — sends status update emails (Confirmed / Cancelled) from Admin Portal -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    // EmailJS config — must match the credentials set in index.html
-    window.EMAILJS_CONFIG = {
-      publicKey: '7jzJ419nvCmAxeJLX',
-      serviceId: 'service_x65ekfh',
-      templateId: 'template_6uavdg3'
-    };
-    if (window.EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY') {
-      emailjs.init({ publicKey: window.EMAILJS_CONFIG.publicKey });
-    }
+  <!-- EmailJS SDK -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
   </script>
 
-  <!-- Scripts -->
+  <!-- Firebase SDK -->
   <script src="firebase.js" defer></script>
+
+  <!-- Main JavaScript -->
   <script src="main.js" defer></script>
+
+  <!-- Admin JavaScript -->
   <script src="admin.js" defer></script>
 </body>
 

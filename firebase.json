@@ -9,12 +9,13 @@
     "predeploy": []
   },
   "hosting": {
+    "target": "beanandbloomcafe",
     "public": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**",
-      "functions/**"
+      "**/functions/**"
     ]
   }
 }

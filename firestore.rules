@@ -1,59 +1,129 @@
 rules_version = '2';
+
 service cloud.firestore {
+
   match /databases/{database}/documents {
 
-    match /reservations/{reservation} {
+    /*
+     * ============================================================
+     * BEAN & BLOOM CAFÉ — FIRESTORE SECURITY RULES
+     * ============================================================
+     *
+     * Customer:
+     *   - Can create a reservation.
+     *   - Cannot read reservations.
+     *   - Cannot modify reservation status.
+     *   - Cannot delete reservations.
+     *
+     * Administrator:
+     *   - Can read reservations.
+     *   - Can update reservation status.
+     *   - Can delete reservations.
+     *
+     * IMPORTANT:
+     * Change the admin email below if your Firebase
+     * Authentication administrator account uses another email.
+     * ============================================================
+     */
 
-      // ── READ ──────────────────────────────────────────────────────────────
-      // Only authenticated admins can read reservation data.
-      // Public visitors cannot enumerate or read customer bookings.
-      allow read: if request.auth != null;
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'admin@beanandbloom.com';
+        //&& request.auth.token.email_verified == true
+    }
 
-      // ── CREATE ────────────────────────────────────────────────────────────
-      // Public can create a reservation (from the customer form) but all
-      // fields are strictly validated server-side:
-      //  • name, email, date, time — required non-empty strings
-      //  • email — must contain '@' (basic format check)
-      //  • guests — integer between 1 and 20
-      //  • status — must be 'pending' on creation (clients cannot self-confirm)
-      //  • No extra unexpected fields beyond the defined schema
+
+    match /reservations/{reservationId} {
+
+      /*
+       * ==========================================================
+       * READ
+       * ==========================================================
+       *
+       * Only the Bean & Bloom administrator can view reservations.
+       */
+      allow read: if isAdmin();
+
+
+      /*
+       * ==========================================================
+       * CREATE
+       * ==========================================================
+       *
+       * Public customers can create reservations.
+       *
+       * Required fields:
+       *   name
+       *   email
+       *   date
+       *   time
+       *   guests
+       *   status
+       *
+       * Customers must create the reservation with status "pending".
+       *
+       * The additional fields below are allowed because the
+       * Bean & Bloom frontend may store reservation information
+       * such as phone, special requests and timestamps.
+       */
       allow create: if
-        // name: non-empty string
+
+        // Name
         request.resource.data.name is string
         && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 100
 
-        // email: non-empty string containing '@'
+        // Email
         && request.resource.data.email is string
         && request.resource.data.email.size() >= 3
+        && request.resource.data.email.size() <= 150
         && request.resource.data.email.matches('.*@.*')
 
-        // date: non-empty string
+        // Date
         && request.resource.data.date is string
         && request.resource.data.date.size() >= 1
+        && request.resource.data.date.size() <= 30
 
-        // time: non-empty string
+        // Time
         && request.resource.data.time is string
         && request.resource.data.time.size() >= 1
+        && request.resource.data.time.size() <= 30
 
-        // guests: integer 1–20
+        // Guests
         && request.resource.data.guests is int
         && request.resource.data.guests >= 1
         && request.resource.data.guests <= 20
 
-        // status: must be 'pending' on creation — clients cannot self-confirm
+        // Customers can only create pending reservations
         && request.resource.data.status == 'pending';
 
-      // ── UPDATE ────────────────────────────────────────────────────────────
-      // Only authenticated admins can update reservations (e.g., confirm/cancel).
-      // The status field must be one of the three allowed values.
+
+      /*
+       * ==========================================================
+       * UPDATE
+       * ==========================================================
+       *
+       * Only the administrator can update reservations.
+       *
+       * The administrator can change status to:
+       *   pending
+       *   confirmed
+       *   cancelled
+       */
       allow update: if
-        request.auth != null
-        && request.resource.data.status in ['pending', 'confirmed', 'cancelled'];
+        isAdmin()
+        && request.resource.data.status
+           in ['pending', 'confirmed', 'cancelled'];
 
-      // ── DELETE ────────────────────────────────────────────────────────────
-      // Only authenticated admins can delete reservations.
-      allow delete: if request.auth != null;
+
+      /*
+       * ==========================================================
+       * DELETE
+       * ==========================================================
+       *
+       * Only the administrator can delete reservations.
+       */
+      allow delete: if isAdmin();
     }
-
   }
 }

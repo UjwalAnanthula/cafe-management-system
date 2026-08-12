@@ -41,7 +41,7 @@ function createTransporter() {
 }
 
 const transporter = createTransporter();
-const SENDER_EMAIL = process.env.SMTP_FROM || process.env.SMTP_USER || 'reservations@mochaandmiso.com';
+const SENDER_EMAIL = process.env.SMTP_FROM || process.env.SMTP_USER || 'reservations@beanandbloom.com';
 
 /**
  * Helper to safely dispatch email and update Firestore status
@@ -55,7 +55,7 @@ async function sendEmailAndUpdateStatus(docRef, recipientEmail, mailOptions) {
 
   try {
     const info = await transporter.sendMail({
-      from: `"Mocha & Miso Craft Café" <${SENDER_EMAIL}>`,
+      from: `"Bean & Bloom Café" <${SENDER_EMAIL}>`,
       to: recipientEmail,
       subject: mailOptions.subject,
       html: mailOptions.html
@@ -101,7 +101,7 @@ exports.onReservationCreated = functions.firestore
 
     // SMS readiness trigger (optional)
     if (res.phone) {
-      await smsService.sendSMS(res.phone, `Mocha & Miso: Your reservation ${res.reservationId} for ${res.date} at ${res.time} has been received!`);
+      await smsService.sendSMS(res.phone, `Bean & Bloom Café: Your reservation ${res.reservationId} for ${res.date} at ${res.time} has been received!`);
     }
   });
 
@@ -140,7 +140,7 @@ exports.onReservationStatusUpdated = functions.firestore
 
       // Send SMS status update if phone exists
       if (afterData.phone) {
-        await smsService.sendSMS(afterData.phone, `Mocha & Miso: Your reservation ${afterData.reservationId} is now ${afterData.status}.`);
+        await smsService.sendSMS(afterData.phone, `Bean & Bloom Café: Your reservation ${afterData.reservationId} is now ${afterData.status}.`);
       }
     }
   });

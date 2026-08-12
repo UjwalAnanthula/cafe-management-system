@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Mocha & Miso](./asstes/logo.jpg)
+![Mocha & Miso](./assets/logo.jpg)
 
 **A premium Japandi-inspired café management system with a public-facing website and a secure admin portal.**
 
@@ -84,7 +84,7 @@ cafe-management-system/
 ├── firebase.js             # Firebase initialization
 ├── firestore.rules         # Firestore security rules
 ├── firebase.json           # Firebase Hosting & Functions config
-├── asstes/                 # Images and media assets
+├── assets/                 # Images and media assets
 ├── screenshots/            # README screenshots
 └── functions/              # Firebase Cloud Functions
     ├── index.js

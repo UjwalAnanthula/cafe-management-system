@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "mochaandmiso"
-  }
+    "default": "bean-and-bloom-cafe-936ed"
+  },
+  "targets": {
+    "bean-and-bloom-cafe-936ed": {
+      "hosting": {
+        "beanandbloomcafe": [
+          "beanandbloomcafe"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

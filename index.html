@@ -917,6 +917,346 @@
     </section>
 
     <!-- ============================================================ -->
+    <!-- ATMOSPHERE / FULL-WIDTH BREAK SECTION -->
+    <!-- ============================================================ -->
+    <section class="atmosphere" id="atmosphere" aria-label="Café atmosphere">
+      <div class="atmosphere-image-wrap parallax-image-wrap">
+        <!-- IMAGE: assets/sklorg-french-restaurant-2506490.jpg -->
+        <img src="assets/sklorg-french-restaurant-2506490.jpg" alt="Evening atmosphere — welcoming café exterior with warm light" class="atmosphere-img parallax-img" loading="lazy" decoding="async" />
+        <div class="atmosphere-overlay"></div>
+      </div>
+      <div class="atmosphere-content container">
+        <p class="atmosphere-label reveal-text" data-split="chars">A place to belong</p>
+        <h2 class="atmosphere-heading reveal-text" data-split="words">
+          "Come as you are.<br/>Stay as long as you need."
+        </h2>
+        <a href="#reservation" class="btn btn-light magnetic" id="atmosphere-cta">Make a Reservation</a>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7. RESERVATION SECTION -->
+    <!-- ============================================================ -->
+    <section class="reservation" id="reservation" aria-labelledby="reservation-heading">
+      <div class="reservation-inner">
+
+        <div class="reservation-content">
+          <div class="section-label reveal-text" data-split="chars">— Reserve</div>
+
+          <h2 class="section-heading reveal-text" id="reservation-heading" data-split="lines">
+            Join us for<br/><em>a slow morning.</em>
+          </h2>
+
+          <p class="reservation-subtext reveal-up">
+            Walk-ins are always welcome, but reservations ensure we set the perfect table for you. For groups of 6 or more, please call us directly.
+          </p>
+
+          <div class="reservation-info reveal-up">
+
+            <div class="res-info-item">
+              <span class="res-info-label">Breakfast</span>
+              <span class="res-info-val">Mon–Fri: 7:30am–11:30am</span>
+            </div>
+
+            <div class="res-info-item">
+              <span class="res-info-label">Lunch</span>
+              <span class="res-info-val">Mon–Sun: 12:00pm–3:30pm</span>
+            </div>
+
+            <div class="res-info-item">
+              <span class="res-info-label">Dinner</span>
+              <span class="res-info-val">Thu–Sun: 6:30pm–10:00pm</span>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="reservation-form-wrap reveal-up">
+
+          <form
+            class="reservation-form"
+            id="reservation-form"
+            novalidate
+            aria-label="Table reservation form"
+          >
+
+            <!-- Name -->
+            <div class="form-group">
+              <input
+                type="text"
+                id="res-name"
+                name="name"
+                class="form-input"
+                placeholder=" "
+                required
+                autocomplete="name"
+              />
+
+              <label for="res-name" class="form-label">
+                Full Name
+              </label>
+
+              <span class="form-line"></span>
+            </div>
+
+
+            <!-- Email + Phone -->
+            <div class="form-row">
+
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="res-email"
+                  name="email"
+                  class="form-input"
+                  placeholder=" "
+                  required
+                  autocomplete="email"
+                />
+
+                <label for="res-email" class="form-label">
+                  Email Address
+                </label>
+
+                <span class="form-line"></span>
+              </div>
+
+
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="res-phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder=" "
+                  autocomplete="tel"
+                />
+
+                <label for="res-phone" class="form-label">
+                  Phone (optional)
+                </label>
+
+                <span class="form-line"></span>
+              </div>
+
+            </div>
+
+
+            <!-- Date + Time -->
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <input
+                  type="date"
+                  id="res-date"
+                  name="date"
+                  class="form-input form-input--date"
+                  required
+                />
+
+                <label
+                  for="res-date"
+                  class="form-label form-label--up"
+                >
+                  Date
+                </label>
+
+                <span class="form-line"></span>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <select
+                  id="res-time"
+                  name="time"
+                  class="form-input form-input--select"
+                  required
+                >
+                  <option value="" disabled selected></option>
+
+                  <option value="0730">7:30 AM</option>
+                  <option value="0800">8:00 AM</option>
+                  <option value="0830">8:30 AM</option>
+                  <option value="0900">9:00 AM</option>
+                  <option value="0930">9:30 AM</option>
+                  <option value="1000">10:00 AM</option>
+                  <option value="1030">10:30 AM</option>
+
+                  <option value="1200">12:00 PM</option>
+                  <option value="1230">12:30 PM</option>
+                  <option value="1300">1:00 PM</option>
+                  <option value="1330">1:30 PM</option>
+                  <option value="1400">2:00 PM</option>
+
+                  <option value="1830">6:30 PM</option>
+                  <option value="1900">7:00 PM</option>
+                  <option value="1930">7:30 PM</option>
+                  <option value="2000">8:00 PM</option>
+                </select>
+
+                <label
+                  for="res-time"
+                  class="form-label form-label--up"
+                >
+                  Time
+                </label>
+
+                <span class="form-line"></span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Guests -->
+            <div class="form-group">
+
+              <div
+                class="guests-selector"
+                role="group"
+                aria-label="Number of guests"
+              >
+
+                <span class="guests-label">
+                  Guests
+                </span>
+
+                <div class="guests-controls">
+
+                  <button
+                    type="button"
+                    class="guests-btn"
+                    id="guests-minus"
+                    aria-label="Decrease guests"
+                  >
+                    −
+                  </button>
+
+                  <span
+                    class="guests-count"
+                    id="guests-count"
+                    aria-live="polite"
+                  >
+                    2
+                  </span>
+
+                  <button
+                    type="button"
+                    class="guests-btn"
+                    id="guests-plus"
+                    aria-label="Increase guests"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+              <input
+                type="hidden"
+                id="res-guests"
+                name="guests"
+                value="2"
+              />
+
+            </div>
+
+
+            <!-- Special Requests -->
+            <div class="form-group">
+
+              <textarea
+                id="res-notes"
+                name="notes"
+                class="form-input form-textarea"
+                placeholder=" "
+                rows="3"
+              ></textarea>
+
+              <label
+                for="res-notes"
+                class="form-label"
+              >
+                Special requests (optional)
+              </label>
+
+              <span class="form-line"></span>
+
+            </div>
+
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="btn btn-primary btn-full magnetic"
+              id="res-submit"
+            >
+
+              <span class="btn-text">
+                Confirm Reservation
+              </span>
+
+              <span
+                class="btn-ripple"
+                aria-hidden="true"
+              ></span>
+
+            </button>
+
+
+            <p class="form-disclaimer">
+              We'll send a confirmation to your email within 30 minutes.
+            </p>
+
+          </form>
+
+
+          <!-- Success message -->
+          <div
+            class="form-success"
+            id="form-success"
+            hidden
+            aria-live="polite"
+          >
+
+            <div
+              class="form-success-icon"
+              aria-hidden="true"
+            >
+              ✓
+            </div>
+
+            <h3>
+              Reservation Received!
+            </h3>
+
+            <p>
+              Thank you. We'll confirm your table within 30 minutes.
+              See you soon.
+            </p>
+
+            <button
+              type="button"
+              class="btn btn-outline"
+              id="res-another-btn"
+              style="margin-top:24px; font-size:13px; padding:10px 22px;"
+            >
+              Book Another Table
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
     <!-- 8. CONTACT SECTION -->
     <!-- ============================================================ -->
     <section class="contact" id="contact" aria-labelledby="contact-heading">
